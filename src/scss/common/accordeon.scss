@@ -1,30 +1,71 @@
-[data-accordion] {
-    [data-accordion-item] {
+.accordion {
+
+    // .accordion__item
+
+    &__item {
         &[data-open] {
-            & > [data-accordion-item-body] {
+            .accordion__item-content {
                 grid-template-rows: 1fr;
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+            .accordion__item-title {
+                svg {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+
+        // .accordion__item-title
+
+        &-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            cursor: pointer;
+
+            @media (any-hover: hover) {
+                &:hover {
+                    svg {
+                        transform: rotate(45deg);
+                    }
+                }
+            }
+
+            svg {
+                width: fit-content;
+                transition: all 0.3s ease 0s;
+                stroke: currentColor;
+            }
+        }
+
+        // .accordion__item-content
+
+        &-content {
+            @media (max-width: 1300px) {
+                display: grid;
+                grid-template-rows: 0fr;
+                transition: grid-template-rows 0.3s;
+            }
+
+            // .accordion__item-content-height
+
+            &-height {
+                overflow: hidden;
+
+                div {
+                    & > :not(:last-child) {
+                    }
+                    p {
+                    }
+                }
             }
         }
     }
 
-    [data-accordion-item-title] {
-        cursor: pointer;
+    // .accordion__open
 
-        * {
-            pointer-events: none;
-        }
-    }
-
-    [data-accordion-item-body] {
-        display: grid;
-        grid-template-rows: 0fr;
-        transition: grid-template-rows 0.3s;
-    }
-
-    [data-accordion-item-height] {
-        overflow: hidden;
-    }
-
-    [data-accordion-item-content] {
+    &__open {
     }
 }

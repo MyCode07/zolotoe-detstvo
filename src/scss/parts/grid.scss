@@ -1,4 +1,18 @@
 .grid {
     display: grid;
+    @include adaptive-value("gap", 30, 10, 1);
 
+    // .grid-4
+
+    &-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    // .grid-2
+
+    &-2 {
+        grid-template-columns: repeat(2, 1fr);
+
+      
+    }
 }

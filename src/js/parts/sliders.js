@@ -1,5 +1,5 @@
 import Swiper from 'swiper';
-import { Pagination, Autoplay, Thumbs } from 'swiper/modules';
+import { Pagination, Autoplay, Thumbs, Navigation } from 'swiper/modules';
 
 const sliders = document.querySelectorAll('.swiper');
 if (sliders.length) {
@@ -9,15 +9,15 @@ if (sliders.length) {
         let next = section.querySelector('.next')
         let pagination = section.querySelector('.pagination')
 
-        if (slider.closest('.slider')) {
+        if (slider.closest('.hero-slider')) {
             new Swiper(slider, {
-                modules: [Autoplay, Pagination],
+                modules: [Autoplay, Navigation],
                 slidesPerView: 1,
                 loop: true,
                 spaceBetween: 20,
-                pagination: {
-                    el: pagination,
-                    clickable: true,
+                navigation: {
+                    nextEl: prev,
+                    prevEl: next,
                 },
                 autoplay: {
                     delay: 4000,

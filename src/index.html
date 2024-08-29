@@ -5,22 +5,266 @@
 @@include('./html/header.html')
 
 <main>
-    <section class="hero">
+    <section class="hero hero-slider">
         <div class="hero__container _container">
             <div class="hero__body">
-                <a href="" class="hero__image">
-                    <img src="img/home-main.png" alt="">
-                    <!-- <svg width="152" height="30" viewBox="0 0 152 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M57.9646 0.0193344C57.9082 0.0403807 57.6859 0.0850559 57.4706 0.11873C56.9847 0.194496 56.308 0.742751 56.0507 1.2691C55.9096 1.55743 55.863 1.89063 55.8613 2.62027C55.8579 4.07342 56.1643 4.68433 57.1429 5.17624C57.5267 5.36901 57.6964 5.38269 59.7108 5.38269C61.7231 5.38269 61.8953 5.36891 62.2787 5.17672C63.1255 4.75225 63.4568 4.17425 63.5374 2.98016C63.6323 1.57427 63.1886 0.632354 62.2459 0.238407C61.8256 0.062862 61.5325 0.0339712 59.9162 0.00928966C58.8993 -0.0063037 58.0211 -0.0018075 57.9646 0.0193344ZM1.21335 0.579261C0.585558 0.888449 0.210136 1.35969 0.0835914 1.99759C0.01354 2.35021 -0.0127549 6.87305 0.00573377 15.3883C0.03624 29.4723 -0.00731112 28.498 0.614421 29.0246C1.26029 29.5717 0.337913 29.538 14.6704 29.538C29.2583 29.538 28.0785 29.5931 28.77 28.8803C29.2361 28.3997 29.2795 28.1755 29.2381 26.463C29.206 25.1337 29.1925 25.0579 28.922 24.6775C28.7666 24.459 28.4564 24.1933 28.2328 24.0871C27.8333 23.8973 27.6549 23.8938 18.1741 23.8938C9.53663 23.8938 8.50527 23.878 8.36075 23.7435C8.21592 23.6086 8.19939 22.4832 8.19939 12.7868C8.19939 0.955796 8.23267 1.61483 7.60333 0.99722C6.98725 0.392618 6.80976 0.360284 4.11103 0.360284C1.7527 0.360284 1.64075 0.368702 1.21335 0.579261ZM69.6535 0.547787C68.9596 0.941734 69.0065 -0.0645638 69.0065 14.4512C69.0065 26.9431 69.0155 27.6027 69.1897 27.7496C69.8533 28.3088 73.3687 29.3014 75.5289 29.5394C75.9243 29.583 76.6407 29.6668 77.1209 29.7257C79.8595 30.0616 80.9207 30.0795 83.3865 29.8313C84.335 29.7357 84.5997 29.6914 86.1085 29.3755C89.7081 28.6219 92.6489 26.1241 93.6325 22.985C94.1735 21.2584 94.2181 20.9079 94.2176 18.3931C94.2171 16.2985 94.1893 15.8827 93.9943 15.0448C93.0138 10.8337 90.4547 8.27741 86.134 7.19305C85.1402 6.94365 84.9579 6.92872 82.873 6.92671C81.5107 6.92538 80.4678 6.96833 80.151 7.03864C79.8686 7.1014 79.1521 7.26594 78.5589 7.40427C77.9658 7.54261 77.3296 7.67644 77.1452 7.7017C76.4962 7.79076 76.5046 7.83371 76.5046 4.43675C76.5046 0.0914655 76.7551 0.360092 72.7058 0.360666C70.1857 0.360953 69.9577 0.37492 69.6535 0.547787ZM123.702 0.518992C123.224 0.753179 122.821 1.13679 122.613 1.55609C122.431 1.92259 122.423 2.49016 122.42 14.9761C122.418 26.5303 122.436 28.0539 122.577 28.3679C122.78 28.8195 123.088 29.1259 123.572 29.357C123.944 29.535 124.328 29.5395 137.2 29.5152C150.402 29.4903 150.445 29.4895 150.728 29.2927C150.884 29.1841 151.154 28.9327 151.326 28.7341C151.64 28.3733 151.64 28.3718 151.674 26.9768C151.693 26.2089 151.678 25.4353 151.642 25.2576C151.563 24.8656 150.941 24.1991 150.488 24.0227C150.219 23.9177 148.375 23.8938 140.558 23.8938C131.968 23.8938 130.941 23.878 130.797 23.7435C130.652 23.6086 130.635 22.491 130.635 12.8728C130.635 5.11683 130.603 2.05154 130.518 1.78779C130.363 1.30708 129.889 0.782548 129.397 0.548839C129.033 0.376164 128.79 0.360571 126.505 0.36411C124.436 0.367267 123.958 0.393766 123.702 0.518992ZM56.5352 7.98863C56.1492 8.09873 55.9042 8.47726 55.9617 8.87445V18.624C55.9617 29.5359 55.9364 29.0856 56.5649 29.3882C56.8254 29.5137 57.3414 29.538 59.7432 29.538C62.529 29.538 62.6185 29.5321 62.8935 29.3306C63.483 28.8988 63.4599 29.3349 63.4595 18.6592C63.4592 9.07582 63.454 8.81887 63.2586 8.5204C62.8786 7.9399 62.7446 7.9178 59.6011 7.9178H56.7835L56.5352 7.98863ZM32.6332 9.39439C31.9441 9.83052 31.9778 9.31613 31.9778 19.3976C31.9778 28.0119 31.9884 28.5516 32.1626 28.8487C32.2642 29.022 32.4953 29.2479 32.6762 29.3505C32.9958 29.5321 33.261 29.5374 42.1979 29.5374C51.2358 29.5374 51.3967 29.534 51.7307 29.3444C52.2343 29.0585 52.4649 28.5032 52.4649 27.5769C52.4649 26.6506 52.2343 26.0954 51.7307 25.8094C51.3992 25.6212 51.2283 25.6165 44.7474 25.6162C38.8452 25.6158 38.0861 25.599 37.9426 25.4655C37.807 25.3391 37.7812 25.0192 37.7812 23.4633C37.7812 21.9074 37.807 21.5875 37.9426 21.4612C38.0855 21.3282 38.7564 21.3109 43.7716 21.3107C48.9646 21.3106 49.4688 21.2965 49.7915 21.1433C50.4306 20.8398 50.5649 20.5594 50.604 19.4471C50.644 18.3088 50.4944 17.8719 49.9611 17.569C49.6615 17.3989 49.3389 17.3893 43.8743 17.389C38.7659 17.3886 38.0856 17.3714 37.9426 17.2383C37.7023 17.0145 37.7023 13.4578 37.9426 13.234C38.0861 13.1004 38.85 13.0837 44.7988 13.0833C51.1678 13.083 51.509 13.0742 51.81 12.9033C52.3127 12.6178 52.4695 12.1907 52.469 11.1081C52.4686 10.0414 52.3196 9.68951 51.7257 9.35229C51.3982 9.16632 51.1899 9.16211 42.1961 9.16183L33.0013 9.16144L32.6332 9.39439ZM98.7936 9.37669C98.6075 9.49512 98.3695 9.74194 98.265 9.92523C98.0837 10.2429 98.0747 10.6851 98.0749 19.3482C98.075 29.4875 98.0299 28.8522 98.7833 29.3209L99.1323 29.538H108.32C118.577 29.538 117.864 29.5862 118.3 28.864C118.479 28.5671 118.515 28.3448 118.515 27.5352C118.515 26.4307 118.392 26.1006 117.868 25.8033C117.551 25.6231 117.303 25.6165 110.844 25.6162C104.895 25.6158 104.132 25.599 103.988 25.4655C103.853 25.3391 103.827 25.0192 103.827 23.4633C103.827 21.9074 103.853 21.5875 103.988 21.4612C104.131 21.3282 104.807 21.3109 109.869 21.3107C115.11 21.3106 115.617 21.2966 115.94 21.1433C116.565 20.8465 116.713 20.5518 116.753 19.5253C116.797 18.4199 116.612 17.8545 116.115 17.5722C115.808 17.3979 115.522 17.3893 109.98 17.389C104.479 17.3886 104.158 17.3792 103.997 17.2136C103.851 17.0638 103.827 16.7781 103.827 15.2195C103.827 13.5787 103.845 13.3849 104.015 13.242C104.185 13.0981 104.812 13.0837 110.902 13.0837C118.428 13.0837 118.06 13.1179 118.418 12.3838C118.563 12.0871 118.614 11.7608 118.615 11.1226C118.618 10.122 118.454 9.71754 117.909 9.3786L117.56 9.16144H108.346H99.1323L98.7936 9.37669ZM82.3594 11.8336C84.2658 12.0291 85.5154 12.9076 86.1721 14.514C86.533 15.3969 86.7693 16.9182 86.7729 18.3817C86.7834 22.6942 85.4036 24.6988 82.2416 24.9656C81.0942 25.0623 77.7959 24.9277 77.2015 24.7598C76.4549 24.5489 76.5046 24.9864 76.5046 18.6332C76.5046 15.4844 76.5332 12.8387 76.5681 12.754C76.6514 12.5518 76.9068 12.4308 77.6161 12.2575C79.4805 11.802 80.8535 11.6793 82.3594 11.8336Z"
-                            fill="white" />
-                    </svg> -->
-                    <h1>Бизнес подарки с логотипом</h1>
-                </a>
+                <div class="hero__content">
+                    <h1>Детский игровой центр <br>под ключ</h1>
+                    <p>Добро пожаловать в "Звездное Детство". Более чем 12 лет мы проектируем и создаем детские
+                        игровые комплексы.</p>
+                    <button class="_btn _btn-blue " data-open-popup data-id="popup">Расчитать проект</button>
+                </div>
+                <div class="swiper r">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="img/hero-slider-1.png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/hero-slider-1.png" alt="">
+                        </div>
+                    </div>
+                    <div class="navigation">
+                        <button class="prev">
+                            <svg viewBox="0 0 16 16">
+                                <use xlink:href="@img/svg/icons.svg#slider-arrow"></use>
+                            </svg>
+                        </button>
+                        <button class="next">
+                            <svg viewBox="0 0 16 16">
+                                <use xlink:href="@img/svg/icons.svg#slider-arrow"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
-
         </div>
     </section>
+
+    <section class="section about">
+        <div class="section__container _container">
+            <div class="section__body">
+                <img class="left" src="img/about.png" alt="">
+                <div class="about__content">
+                    <label>Мы международную компанию с более чем 12-летним опытом в проектировании и создании детских
+                        игровых комплексов с
+                        собственным производства
+                        в России и Китае.</label>
+                    <p>Наша главная цель - исходя из ваших желаний, создать действительно уникальный проект, который
+                        позволит вам достигнуть
+                        всех финансовых и творческих целей.</p>
+
+                    <button class="_btn _btn-blue " data-open-popup data-id="popup">Получить готовое решение</button>
+
+                </div>
+                <img class="right" src="img/about.png" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="section advantages">
+        <div class="section__container _container">
+            <div class="section__body">
+                <div class="advantages__grid grid grid-4">
+                    <div class="advantages__item">
+                        <img src="img/icons/advantages-1.svg" alt="">
+                        <h3>12+<br>лет работы</h3>
+                        <p>Большой опыт в производстве и запуске проектов любой сложности</p>
+                    </div>
+                    <div class="advantages__item">
+                        <img src="img/icons/advantages-2.svg" alt="">
+                        <h3>10000+<br>проектов</h3>
+                        <p>Указывает на нашу популярность и доверие к компании</p>
+                    </div>
+                    <div class="advantages__item">
+                        <img src="img/icons/advantages-1.svg" alt="">
+                        <h3>400+<br>госзаказа</h3>
+                        <p>Высокий уровень компетенции в работе с госзаказчиками</p>
+                    </div>
+                    <div class="advantages__item">
+                        <img src="img/icons/advantages-2.svg" alt="">
+                        <h3>100+<br>специалистов</h3>
+                        <p>Команда экспертов, которые могут обеспечивать высокий уровень качества сервиса</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section steps">
+        <div class="section__container _container">
+            <div class="section__body">
+                <h2>От идеи <br> до запуска</h2>
+                <div class="steps__box ">
+                    <div class="accordion grid grid-2" data-accordion data-width="10000">
+                        <div class="accordion__item steps__item" data-accordion-item>
+                            <div class="steps__item-image desk">
+                                <img src="img/steps/step-1.png" alt="">
+                            </div>
+                            <div class="steps__item-content">
+                                <label>этап 1</label>
+                                <div class="steps__item-image mob">
+                                    <img src="img/steps/step-1.png" alt="">
+                                </div>
+                                <div class="accordion__item-title steps__item-name" data-accordion-title>
+                                    <h4>Знакомство <br>и планирование</h4>
+                                    <button>
+                                        <svg viewBox="0 0 16 16">
+                                            <use xlink:href="@img/svg/icons.svg#open"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="accordion__item-content" data-accordion-content>
+                                    <div class="accordion__item-content-height">
+                                        <div>
+                                            <p>Первый шаг — это знакомство с вашим персональным менеджером. Мы детально
+                                                обсуждаем
+                                                ваши
+                                                идеи, цели и бюджет, чтобы разработать оптимальное решение для вашего
+                                                проекта.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion__item steps__item" data-accordion-item>
+                            <div class="steps__item-image desk">
+                                <img src="img/steps/step-2.png" alt="">
+                            </div>
+                            <div class="steps__item-content">
+                                <label>этап 2</label>
+                                <div class="steps__item-image mob">
+                                    <img src="img/steps/step-2.png" alt="">
+                                </div>
+                                <div class="accordion__item-title steps__item-name" data-accordion-title>
+                                    <h4>Разработка <br> финансовой модели</h4>
+                                    <button>
+                                        <svg viewBox="0 0 16 16">
+                                            <use xlink:href="@img/svg/icons.svg#open"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="accordion__item-content" data-accordion-content>
+                                    <div class="accordion__item-content-height">
+                                        <div>
+                                            <p>Мы работаем с вами над созданием финансовой модели, которая учитывает
+                                                ваши
+                                                возможности и
+                                                обеспечивает устойчивость проекта. Это включает расчет затрат на
+                                                оборудование,
+                                                операционные расходы и прогнозируемую доходность.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion__item steps__item" data-accordion-item>
+                            <div class="steps__item-image desk">
+                                <img src="img/steps/step-3.png" alt="">
+                            </div>
+                            <div class="steps__item-content">
+                                <label>этап 3</label>
+                                <div class="steps__item-image mob">
+                                    <img src="img/steps/step-3.png" alt="">
+                                </div>
+                                <div class="accordion__item-title steps__item-name" data-accordion-title>
+                                    <h4>Консультации <br> и подбор оборудования</h4>
+                                    <button>
+                                        <svg viewBox="0 0 16 16">
+                                            <use xlink:href="@img/svg/icons.svg#open"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="accordion__item-content" data-accordion-content>
+                                    <div class="accordion__item-content-height">
+                                        <div>
+                                            <p>Мы помогаем вам выбрать оборудование с учетом современных тенденций и
+                                                потребностей вашего игрового центра. Благодаря нашему опыту, вы получите
+                                                оптимальное
+                                                сочетание цены и качества.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion__item steps__item" data-accordion-item>
+                            <div class="steps__item-image desk">
+                                <img src="img/steps/step-4.png" alt="">
+                            </div>
+                            <div class="steps__item-content">
+                                <label>этап 4</label>
+                                <div class="steps__item-image mob">
+                                    <img src="img/steps/step-4.png" alt="">
+                                </div>
+                                <div class="accordion__item-title steps__item-name" data-accordion-title>
+                                    <h4>Проектирование <br> и производство</h4>
+                                    <button>
+                                        <svg viewBox="0 0 16 16">
+                                            <use xlink:href="@img/svg/icons.svg#open"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="accordion__item-content" data-accordion-content>
+                                    <div class="accordion__item-content-height">
+                                        <div>
+                                            <p>После утверждения дизайн-проекта он проходит проверку нашими инженерами
+                                                на
+                                                соответствие всем стандартам безопасности. Только после этого начинается
+                                                производство
+                                                оборудования.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion__item steps__item" data-accordion-item>
+                            <div class="steps__item-image desk">
+                                <img src="img/steps/step-5.png" alt="">
+                            </div>
+                            <div class="steps__item-content">
+                                <label>этап 4</label>
+                                <div class="steps__item-image mob">
+                                    <img src="img/steps/step-5.png" alt="">
+                                </div>
+                                <div class="accordion__item-title steps__item-name" data-accordion-title>
+                                    <h4>Доставка <br> и монтаж</h4>
+                                    <button>
+                                        <svg viewBox="0 0 16 16">
+                                            <use xlink:href="@img/svg/icons.svg#open"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="accordion__item-content" data-accordion-content>
+                                    <div class="accordion__item-content-height">
+                                        <div>
+                                            <p>Мы обеспечиваем доставку оборудования на объект и выполняем все работы по
+                                                монтажу.
+                                                Ваша игровая площадка будет готова к запуску точно в оговоренные сроки.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video">
+                    <img src="img/hero-slider-1.png" alt="">
+                    <button>
+                        <img src="img/icons/play.svg" alt="">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="_ticker">
+        <div class="_ticker-text">Полный цикл разработки</div>
+        <div class="_ticker-text"><img src="img/icons/ticker-flower.svg" alt=""></div>
+        <div class="_ticker-text">Полный цикл разработки</div>
+    </div>
+
 </main>
 
 @@include('./html/footer.html')

@@ -42,8 +42,12 @@ main {
         padding-inline: $padding + px;
     }
 
+    @media (max-width: 1200px) {
+        padding-inline: 25px;
+    }
+
     @media (max-width: 1024px) {
-        padding-inline: 15px;
+        padding-inline: 10px;
     }
 }
 
@@ -53,25 +57,170 @@ h3,
 h4,
 h5 {
     font-family: MultiroundPro;
+    text-align: center;
 }
 
 h1 {
-    color: $white;
-    font-size: 90px;
+    color: $accent;
+    @include adaptive-value("font-size", 96, 38, 1);
     font-weight: 400;
-    line-height: 0.9;
-    letter-spacing: -1.8px;
+    line-height: 1;
+    letter-spacing: -2px;
     text-transform: uppercase;
+    margin-bottom: 30px;
 }
 
 h2 {
-    font-size: 80px;
+    @include adaptive-value("font-size", 80, 36, 1);
     line-height: 1;
 }
 
 h3 {
-    font-size: 34px;
+    @include adaptive-value("font-size", 34, 22, 1);
     line-height: 1.1;
+}
+
+p {
+    line-height: 1.4;
+
+    @media (max-width: 1024px) {
+        line-height: 1.2;
+        font-size: 16px;
+    }
+}
+
+._btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: MultiroundPro;
+    width: fit-content;
+
+    text-align: center;
+    white-space: nowrap;
+    @include adaptive-value("font-size", 20, 14, 1);
+
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+
+    border-radius: 100px;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    border-bottom: 5px solid currentColor;
+    border-left: 2px solid currentColor;
+
+    // ._btn-orange
+
+    &-orange {
+        padding: 20px;
+        color: $accent;
+        transition: all 0.3s ease 0s;
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: $accent_2;
+                color: $white;
+                border-color: $black;
+            }
+        }
+    }
+
+    // ._btn-blue
+
+    &-blue {
+        padding: 20px 70px;
+        color: $white;
+        background-color: $accent_2;
+        border-color: $black;
+        transition: background-color 0.3s ease 0s;
+
+        @media (max-width: 1024px) {
+            padding: 20px 30px;
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: $accent;
+            }
+        }
+    }
+}
+
+.swiper {
+    // .swiper-wrapper
+
+    &-wrapper {
+    }
+
+    // .swiper-slide
+
+    &-slide {
+    }
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    @media (max-width: 1024px) {
+        gap: 10px;
+    }
+
+    button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 80px;
+        height: 80px;
+
+        border-radius: 50%;
+        border-top: 1px solid #ff451c;
+        border-right: 1px solid #ff451c;
+        border-bottom: 3px solid #ff451c;
+        border-left: 1px solid #ff451c;
+
+        transition: background-color 0.3s ease 0s;
+
+        @media (max-width: 1024px) {
+            width: 50px;
+            height: 50px;
+        }
+
+        img,
+        svg {
+            flex: 0 0 auto;
+            width: 14px;
+            height: 14px;
+            object-fit: contain;
+            fill: currentColor;
+            transition: fill 0.3s ease 0s;
+            pointer-events: none;
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: $accent;
+
+                svg {
+                    fill: $white;
+                }
+            }
+        }
+    }
+
+    .prev {
+        img,
+        svg {
+            transform: rotate(180deg);
+        }
+    }
+    .next {
+    }
 }
 
 figure,

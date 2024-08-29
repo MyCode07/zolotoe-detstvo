@@ -1,96 +1,25 @@
 <header class="header _fixed">
-    <div class="header__top">
-        <div class="_container">
-            <div class="header__top-body">
-                <span>Часы работы: пн-пт 10:00 - 19:00</span>
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="">О компании</a>
-                            <ul>
-                                <li><a href="">Бренды</a></li>
-                                <li><a href="">Новости</a></li>
-                                <li><a href="">Статьи</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="">Оплата и доставка</a></li>
-                        <li><a href="">Контакты</a></li>
-                    </ul>
-                </nav>
-                <a href="" target="_blank" class="header__top-phone">+7 (499) 391-20-42</a>
-                <ul class="_socials">
-                    <li>
-                        <a href="" target="_blank">
-                            <svg width="14" height="13" viewBox="0 0 14 13">
-                                <use xlink:href='@img/svg/icons.svg#tg' />
-                            </svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" target="_blank">
-                            <svg width="14" height="15" viewBox="0 0 14 15">
-                                <use xlink:href='@img/svg/icons.svg#wh' />
-                            </svg>
-                        </a>
-                    </li>
-                </ul>
-                <button class="_btn _btn-white" data-open-popup data-id="appointment">Запросить рачет</button>
-            </div>
-        </div>
-    </div>
-    <div class="header__main">
-        <div class="_container">
-            <div class="header__main-body">
-                <a href="/" class="header__logo">
-                    <img src="@img/logo.svg" alt="">
+    <div class="header__container">
+        <div class="header__body">
+            <div>
+                <a href="" target="_blank" class="_header-btn"><span class="desk">+7 (499) 391-20-42</span>
+                    <img class="mob" src="@img/icons/phone.svg" alt="">
+
                 </a>
-                <button class="_btn _btn-border header__catalog">
-                    <svg width="22" height="26" viewBox="0 0 22 26">
-                        <use xlink:href='@img/svg/icons.svg#catalog' />
-                    </svg>
-                    <svg class="_close" width="22" height="26" viewBox="0 0 22 26">
-                        <use xlink:href='@img/svg/icons.svg#close' />
-                    </svg>
-                    <span>Каталог</span>
-                </button>
-                <nav>
-                    <ul>
-                        <li><a href="">Акции</a></li>
-                        <li><a href="">Сувенирная продукция</a></li>
-                        <li><a href="">Корпоративные подарки</a></li>
-                        <li><a href="">Нанесение логотипа</a></li>
-                    </ul>
-                </nav>
-                <div class="header__actions">
-                    <div class="header__search-form">
-                        <form action="#">
-                            <input type="search" name="s" placeholder="Я ищу...">
-                            <button>Найти</button>
-                        </form>
-                        <button class="header__search-close">
-                            <svg width="12" height="12" viewBox="0 0 12 12">
-                                <use xlink:href='@img/svg/icons.svg#close' />
-                            </svg>
-                        </button>
-                    </div>
-                    <button class="header__search header__actions-item">
-                        <svg width="17" height="18" viewBox="0 0 17 18">
-                            <use xlink:href='@img/svg/icons.svg#search' />
-                        </svg>
-                    </button>
-                    <a href="#" class="header__cart header__actions-item" data-open-popup="" data-id="basket">
-                        <span>3</span>
-                        <svg width="24" height="24" viewBox="0 0 24 24">
-                            <use xlink:href='@img/svg/icons.svg#cart' />
-                        </svg>
-                    </a>
-                    <button class="header__burger header__actions-item">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
+                <a href="mailto:sale@kidstar.su" target="_blank" class="desk"><span>sale@kidstar.su</span> </a>
             </div>
+
+            <a href="" class="header__logo">
+                <img class="desk" src="@img/icons/desktop-logo.svg" alt="">
+                <img class="mob" src="@img/icons/mobile-logo.svg" alt="">
+            </a>
+
+            <div>
+                <span class="header__worktime">Пн-Пт: 09.00 -18.00</span>
+                <button class="_btn _btn-orange desk" data-open-popup data-id="popup">Обратный звонок</button>
+                <button class="header__burger _header-btn"><span></span><span></span><span></span></button>
+            </div>
+
         </div>
     </div>
 </header>
