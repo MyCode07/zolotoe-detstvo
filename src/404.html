@@ -1,0 +1,41 @@
+@@include('./html/head.html', {
+"title":"Ошибка 404",
+})
+
+@@include('./html/header.html')
+
+<main>
+    <section class="section pages-hero ">
+        <div class="section__container _container">
+            <div class="section__body">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li>
+                            <a href="">
+                                <span>Главная</span>
+                            </a>
+                            <div>/</div>
+                        </li>
+                        <li>
+                            <span>Ошибка 404</span>
+                        </li>
+                    </ul>
+                </div>
+                <h1>Ошибка 404</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="section error">
+        <div class="section__container _container">
+            <div class="section__body">
+                <span>404</span>
+                <p>Упс! Типичная ошибка, но у нас все под контролем</p>
+                <a href="/" class="_btn _btn-accent">Вернуться на главную страницу</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+@@include('./html/footer.html')
+@@include('./html/scripts.html')
