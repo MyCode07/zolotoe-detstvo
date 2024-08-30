@@ -82,6 +82,10 @@
     &__burger {
         margin-left: auto;
 
+        @media (min-width: 1025px) {
+            display: none;
+        }
+
         span {
             width: 20px;
             height: 2px;
@@ -119,7 +123,6 @@
     }
 
     ._header-btn {
-        display: none;
         @media (max-width: 1024px) {
             position: relative;
             display: flex;

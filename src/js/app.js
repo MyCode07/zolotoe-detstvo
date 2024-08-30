@@ -1,6 +1,8 @@
 // import { maskInputs } from "./static/inputmask.js";
 
 import "./parts/sliders.js";
+import "./parts/tabs.js";
+import "./parts/show-more.js";
 // import "./parts/popup.js";
 // import "./parts/menu.js";
 import { accorden } from "./static/accordeon.js";
@@ -47,6 +49,7 @@ if (inputItems.length) {
 
 
 // var hoverMouse = function ($el) {
+
 //     $el.each(function () {
 //         var $self = $(this);
 //         var hover = false;
