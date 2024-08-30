@@ -253,7 +253,6 @@ p {
     }
 }
 
-
 figure,
 img,
 svg,
@@ -291,4 +290,20 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
     -moz-appearance: textfield;
+}
+
+.arca {
+    .arca-top {
+        margin-bottom: -1px;
+    }
+
+    .arca-mask {
+        width: 100%;
+        clip-path: url(#arca);
+    }
+
+    .arca-bottom {
+        transform: rotate(180deg);
+        margin-top: -1px;
+    }
 }

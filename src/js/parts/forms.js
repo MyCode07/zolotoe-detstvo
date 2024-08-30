@@ -1,279 +1,259 @@
 "use strict"
 
-import { lockPadding } from '../utils/lockPadding.js';
+import { lockPadding } from "../utils/lockPadding.js";
 
-const url = 'https://yanstudio.site/wp-content/themes/blank-sheet/assets/files/curl.php';
+const url = 'url';
+const sentPopup = document.querySelector('.popup#thanks');
+const errorPopup = document.querySelector('.popup#error');
+
+const allowedFileTypes = [
+    'image/x-png',
+    'image/png',
+    'image/avif',
+    'image/webp',
+    'image/png',
+    'image/jpg',
+    'image/jpeg',
+    'text/plain',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    '.csv',
+    'text/csv',
+    'application/vnd.ms-excel',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/msword',
+    'application/pdf',
+    'application/vnd.ms-powerpoint',
+];
 
 document.addEventListener('DOMContentLoaded', function () {
-    const forms = document.querySelectorAll('form')
-    const thanksPopup = document.querySelector('.popup#thanks');
-    const failPopup = document.querySelector('.popup#error');
-    const laoder = document.querySelector('.loader');
-
+    const forms = document.querySelectorAll('.form')
     if (forms.length) {
         forms.forEach(form => {
+
             form.addEventListener('submit', async function (e) {
                 e.preventDefault();
 
-                removeExistingErrorMsgs(form);
                 let error = validateForm(form)
-                console.log(error);
 
-                const formData = new FormData(form);
+                let formData = new FormData(form);
 
+                const formFile = form.querySelector('input[name="file[]"]');
                 if (formFile && formFile.files[0]) {
                     formData.append('file', formFile.files[0]);
                 }
 
+                formData.append('action', 'ajax_forms');
+
                 if (error === 0) {
                     form.classList.add('_sending');
-                    showLoader();
 
                     let response = await fetch(url, {
                         method: 'POST',
                         body: formData
                     });
 
-                    console.log(response);
+                    let result = await response.json();
 
                     if (response.ok) {
+                        console.log(result);
                         sentMessage(form)
                         form.reset();
+                        resetForm(formFile);
                         form.classList.remove('_sending');
-                        hideLoader();
-
-                        // заявка
-                        ym(93665255, 'reachGoal', 'zayavka');
-                        resetForm()
                     }
                     else {
+                        console.log(result);
                         failMessage(form)
+                        resetForm(formFile);
                         form.classList.remove('_sending');
-                        hideLoader();
-                        resetForm()
                     }
                 }
                 else {
+                    fillAllFields(form)
+                    resetForm(formFile);
                     form.classList.remove('_sending');
-                    resetForm()
                 }
             })
 
-            checkCheckBoxes(form)
+            checkFiles(form)
         })
     }
+});
 
-    function validateForm(form) {
-        let error = 0;
-        const formReq = [...form.querySelectorAll('[data-required] input')].concat([...form.querySelectorAll('[data-required] textarea')])
 
-        for (let i = 0; i < formReq.length; i++) {
-            const input = formReq[i]
 
+function validateForm(form) {
+    let error = 0;
+    const formReq = [...form.querySelectorAll('[data-required] input')].concat([...form.querySelectorAll('[data-required] textarea')])
+
+    for (let i = 0; i < formReq.length; i++) {
+        const input = formReq[i]
+
+        formRemoveError(input);
+        validateInput()
+
+        input.addEventListener('input', function () {
             formRemoveError(input);
             validateInput()
+        })
 
-            input.addEventListener('input', function () {
-                formRemoveError(input);
-                validateInput();
-            })
-
-            function validateInput() {
-                if (input.getAttribute('type') === 'email') {
-                    if (emailTest(input)) {
+        function validateInput() {
+            if (input.getAttribute('type') === 'email') {
+                if (emailTest(input)) {
+                    formAddError(input);
+                    error++;
+                }
+            }
+            else {
+                if (input.getAttribute('name') === 'phone') {
+                    if (/[_]/.test(input.value) || input.value.length < 18) {
                         formAddError(input);
                         error++;
                     }
-                    else {
-                        formRemoveError(input);
-                    }
                 }
                 else {
-                    if (input.getAttribute('name') === 'phone') {
-                        if (/[_]/.test(input.value) || input.value.length < 16) {
-                            formAddError(input);
-                            error++;
-                        } else {
-                            formRemoveError(input);
-                        }
-                    }
-                    else {
-                        if (input.value.length < 2) {
-                            formAddError(input);
-                            error++;
-                        } else {
-                            formRemoveError(input);
-                        }
+                    if (input.value.length < 2) {
+                        formAddError(input);
+                        error++;
                     }
                 }
             }
         }
+    }
 
-        const checkBoxContainers = form.querySelectorAll('[data-checkbox-container]')
-        let checkedArr = [];
-        for (let i = 0; i < checkBoxContainers.length; i++) {
-            const checkBoxes = [...checkBoxContainers[i].querySelectorAll('input')]
+    const checkBoxContainers = form.querySelectorAll('[data-checkbox-container]')
+    let checkedArr = [];
+    for (let i = 0; i < checkBoxContainers.length; i++) {
+        const checkBoxes = [...checkBoxContainers[i].querySelectorAll('input')]
 
-            checkBoxes.forEach(input => {
-                input.addEventListener('input', function () {
-                    input.closest('[data-checkbox-container]').classList.remove('_error')
-                    removeElemErrorMsg(checkBoxContainers[i])
-                })
+        checkBoxes.forEach(input => {
+            input.addEventListener('input', function () {
+                input.closest('[data-checkbox-container]').classList.remove('_error')
             })
-
-            checkedArr.push(checkBoxes.some(input => {
-                if (!input.checked) {
-                    input.closest('[data-checkbox-container]').classList.add('_error')
-                }
-                else {
-                    input.closest('[data-checkbox-container]').classList.remove('_error')
-                }
-                return input.checked
-            }))
-        }
-
-        checkedArr.forEach((elem, i) => {
-            if (elem == true) {
-                removeElemErrorMsg(checkBoxContainers[i])
-            }
-            else {
-                addErrorMsg(checkBoxContainers[i], checkBoxContainers[i].closest('.form__block').querySelector('.form__block-title').textContent)
-            }
-        });
-
-
-        const checked = checkedArr.every(check => { return check == true })
-        if (!checked === true) error++
-
-        return error;
-    }
-
-    function formAddError(input) {
-        input.closest('.form__item').classList.add('_error');
-        addErrorMsg(input, input.placeholder)
-    }
-
-    function formRemoveError(input) {
-        input.closest('.form__item').classList.remove('_error');
-        removeElemErrorMsg(input)
-
-        const submitBtnBlock = input.closest('form').querySelector('.form__button .error-msgs')
-        const existMsgs = submitBtnBlock.querySelectorAll('.form__button .error-msgs a')
-
-        if (!existMsgs.length) {
-            submitBtnBlock.classList.add('_hide')
-            removeExistingErrorMsgs(input.closest('form'));
-        }
-    }
-
-    function addErrorMsg(elem, text) {
-        removeElemErrorMsg(elem)
-        const submitBtnBlock = elem.closest('form').querySelector('.form__button .error-msgs')
-        const item = `<a href="#${elem.id}" data-id="${elem.id}">${text},</a>`
-        submitBtnBlock.classList.remove('_hide')
-        submitBtnBlock.querySelector('span').insertAdjacentHTML('beforeend', item)
-    }
-
-    function removeElemErrorMsg(elem) {
-        const msg = elem.closest('form').querySelector(`.form__button .error-msgs a[data-id="${elem.id}"]`)
-        if (msg) {
-            msg.remove();
-        }
-    }
-
-    function removeExistingErrorMsgs(form) {
-        const existMsgs = form.querySelectorAll('.form__button .error-msgs a')
-        if (existMsgs.length) {
-            existMsgs.forEach(m => m.remove())
-        }
-    }
-
-    function emailTest(input) {
-        return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
-    }
-
-    function sentMessage() {
-        const activePopup = document.querySelector('.popup._open');
-        if (activePopup) activePopup.classList.remove('_open');
-
-        thanksPopup.classList.add('_open')
-        lockPadding();
-
-        const loader = document.querySelector('.loader');
-        if (loader) {
-            loader.remove();
-        }
-    }
-
-    function failMessage() {
-        failPopup.classList.add('_open')
-        lockPadding();
-
-        const loader = document.querySelector('.loader');
-        if (loader) {
-            loader.remove();
-        }
-    }
-
-    function hideLoader() {
-        laoder.classList.remove('_open')
-    }
-
-    function showLoader() {
-        laoder.classList.add('_open')
-    }
-
-    function resetForm() {
-        if (formFile) {
-            const fileElem = formFile.closest('.form__item')
-            const fileNameElem = fileElem.querySelector('.filename');
-            const deleteFileElem = fileElem.querySelector('._delete-file');
-
-            fileNameElem.innerHTML = '+ Прикрепить файл';
-            formFile.value = '';
-
-            deleteFileElem.style.display = 'none';
-            deleteFileElem.classList.remove('_active');
-        }
-    }
-
-    const formFile = document.querySelector('input[name="file"]');
-    if (formFile) {
-        const fileElem = formFile.closest('.form__item')
-        const fileNameElem = fileElem.querySelector('.filename');
-        const deleteFileElem = fileElem.querySelector('._delete-file');
-
-        formFile.addEventListener('change', () => {
-            if (formFile.files[0]) {
-                uploadFile(formFile.files[0]);
-            }
-        });
-
-        deleteFileElem.addEventListener('click', () => {
-            fileNameElem.innerHTML = '+ Прикрепить файл';
-            formFile.value = '';
-
-            deleteFileElem.classList.remove('_active');
         })
 
-        function uploadFile(file) {
+        checkedArr.push(checkBoxes.some(input => {
+            if (!input.checked) {
+                input.closest('[data-checkbox-container]').classList.add('_error')
+            }
+            else {
+                input.closest('[data-checkbox-container]').classList.remove('_error')
+            }
+            return input.checked
+        }))
+    }
 
-            if (!['application/msword', 'application/pdf', 'application/vnd.ms-powerpoint', 'text/plain'].includes(file.type)) {
-                alert('Разрешены только текстовые документы.');
-                document.querySelector('#filename').innerHTML = '';
+    const checked = checkedArr.every(check => { return check == true })
+    if (!checked === true) {
+        error++
+    }
+
+    return error;
+}
+
+function formAddError(input) {
+    input.closest('.form__item').classList.add('_error');
+}
+
+function formRemoveError(input) {
+    input.closest('.form__item').classList.remove('_error');
+}
+
+function emailTest(input) {
+    return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
+}
+
+function sentMessage(form) {
+    const activePopup = document.querySelector('.popup._open');
+    if (activePopup) {
+        activePopup.classList.remove('_open')
+    }
+
+    sentPopup.classList.add('_open')
+    lockPadding();
+}
+
+function failMessage(form) {
+    errorPopup.classList.add('_open')
+    lockPadding();
+}
+
+function fillAllFields(form) {
+    console.log('Запольните все поля');
+}
+
+function resetForm(formFile) {
+    if (formFile) {
+        const fileElem = formFile.closest('.file')
+        const fileNameElem = fileElem.querySelector('.filename span');
+        const deleteFileElem = fileElem.querySelector('._delete-file');
+
+        fileNameElem.innerHTML = 'Прикрепить файл';
+        formFile.value = '';
+
+        deleteFileElem.style.display = 'none';
+    }
+}
+
+function checkFiles(form) {
+    const formFile = form.querySelector('input[name="file[]"]');
+
+    if (!formFile) return;
+
+
+    const fileElem = formFile.closest('.file')
+    const deleteFileElem = fileElem.querySelector('._delete-file');
+
+    let uploadedFiels = fileElem.querySelectorAll('.file-upload')
+
+    formFile.addEventListener('change', () => {
+        uploadedFiels = fileElem.querySelectorAll('.file-upload')
+        if (uploadedFiels.length) {
+            uploadedFiels.forEach(f => f.remove())
+        }
+
+        uploadFile(formFile.files);
+        console.log(formFile.files);
+    });
+
+
+    deleteFileElem.addEventListener('click', () => {
+        formFile.value = '';
+        deleteFileElem.style.display = 'none';
+
+        uploadedFiels = fileElem.querySelectorAll('.file-upload')
+        if (uploadedFiels.length) {
+            uploadedFiels.forEach(f => f.remove())
+        }
+    })
+
+
+    function uploadFile(files) {
+        [...files].forEach((file, index) => {
+            console.log(index);
+
+            if (!allowedFileTypes.includes(file.type)) {
+                alert('Разрешены только текстовые документы и изображения.');
                 formFile.value = '';
+
+                deleteFileElem.style.display = 'none';
+
                 return;
             }
-            if (file.size > 2 * (1024 * 1024)) {
-                alert('Файл должен быть менее 2 МБ.');
+            if (file.size > 20 * 1024 * 1024) {
+                alert('Файл должен быть менее 20 МБ.');
+
+                deleteFileElem.style.display = 'none';
                 return;
             }
+
+            deleteFileElem.style.display = 'block';
 
             var reader = new FileReader();
 
             reader.onload = function (e) {
-                fileNameElem.innerHTML = file.name;
-                deleteFileElem.classList.add('_active');
+                const newfile = `<div class="file-upload" data-id="${index}">${file.name}</div>`;
+                fileElem.insertAdjacentHTML('beforeend', newfile)
             };
 
             reader.onerror = function (e) {
@@ -281,35 +261,6 @@ document.addEventListener('DOMContentLoaded', function () {
             };
 
             reader.readAsDataURL(file);
-        }
+        });
     }
-});
-
-function checkCheckBoxes(form) {
-    const checkBoxContainers = form.querySelectorAll('[data-checkbox-container]')
-    if (checkBoxContainers.length) {
-        checkBoxContainers.forEach(container => {
-            const cehckboxes = container.querySelectorAll('input[type="checkbox"]')
-            if (cehckboxes.length) {
-                cehckboxes.forEach(checkbox => {
-                    checkbox.addEventListener('input', () => {
-                        cehckboxes.forEach(item => {
-                            if (item != checkbox) {
-                                item.checked = false
-                            }
-                        })
-                    })
-                })
-            }
-        })
-    }
-}
-
-
-const fileDeleteBtn = document.querySelector('._delete-file');
-if (fileDeleteBtn) {
-    fileDeleteBtn.addEventListener('click', (e) => {
-        document.querySelector('.filename').innerHTML = '+ Прикрепить файл';
-        e.target.classList.remove('_active');
-    })
 }

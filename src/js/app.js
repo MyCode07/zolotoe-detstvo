@@ -1,5 +1,6 @@
 import { maskInputs } from "./static/inputmask.js";
 
+import "./parts/forms.js";
 import "./parts/sliders.js";
 import "./parts/tabs.js";
 import "./parts/show-more.js";
