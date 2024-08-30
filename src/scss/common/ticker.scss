@@ -22,7 +22,9 @@
 
     &-text {
         display: flex;
+        align-items: center;
         justify-content: space-between;
+        @include adaptive-value("gap", 60, 30, 1);
 
         span {
             color: rgba(255, 197, 109, 0.5);

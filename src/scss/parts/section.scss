@@ -288,10 +288,10 @@
         width: 105%;
         height: 100px;
         transform: translate(-50%, 0);
-        background-image: url("@img/stepdecor-top.png");
         background-repeat: no-repeat;
         background-size: 100%;
         background-position: bottom;
+        background-color: #ff451c;
 
         @media (max-width: 1024px) {
         }
@@ -311,9 +311,14 @@
     &__box {
         @include adaptive-value("margin-bottom", 150, 70, 1);
 
-        .grid {
+        .accordion {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            @include adaptive-value("gap", 30, 10, 1);
+
             @media (max-width: 768px) {
-                grid-template-columns: 1fr;
+                flex-direction: column;
             }
         }
     }
@@ -321,6 +326,10 @@
     // .steps__item
 
     &__item {
+        @media (min-width: 769px) {
+            width: calc(50% - 15px);
+        }
+
         display: flex;
         justify-content: space-between;
         gap: 30px;
@@ -927,6 +936,7 @@
 }
 
 .important {
+    @include adaptive-value("margin-top", 300, 100, 1);
 
     .section__body {
         position: relative;
@@ -1309,6 +1319,12 @@
     ._btn {
         position: relative;
         z-index: 2;
+
+        @media (any-hover: hover) {
+            &:hover {
+                border-color: $black;
+            }
+        }
     }
 }
 
@@ -1320,6 +1336,55 @@
     // .review__box
 
     &__box {
+        // .review__box-loc
+
+        &-loc {
+            border-radius: 100px;
+            border-top: 4px solid #ff451c;
+            border-right: 4px solid #ff451c;
+            border-bottom: 8px solid #ff451c;
+            border-left: 4px solid #ff451c;
+            background: $white;
+            position: absolute;
+            bottom: -25px;
+            z-index: 2;
+            padding: 10px 20px;
+
+            text-align: center;
+            font-family: "Multiround Pro";
+            font-size: 16px;
+
+            @media (max-width: 1024px) {
+                font-size: 14px;
+
+                border-top: 2px solid #ff451c;
+                border-right: 2px solid #ff451c;
+                border-bottom: 6px solid#ff451c;
+                border-left: 2px solid #ff451c;
+            }
+        }
+
+        &:not(:has(input:checked)) {
+            .review__text p {
+                display: -webkit-box;
+                -webkit-line-clamp: 10;
+                line-clamp: 10;
+                -webkit-box-orient: vertical;
+
+                position: relative;
+                margin-bottom: 0;
+
+                &:after {
+                    position: absolute;
+                    content: "";
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 50px;
+                    background: linear-gradient(180deg, rgba($color: #fffbec, $alpha: 0.5) 0%, #fffbec 100%);
+                }
+            }
+        }
     }
 
     // .review__text
@@ -1328,10 +1393,7 @@
         p {
             text-align: center;
             overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 10;
-            line-clamp: 10;
-            -webkit-box-orient: vertical;
+            margin-bottom: 1em;
         }
     }
 
@@ -1381,32 +1443,6 @@
             h4 {
             }
 
-            label {
-                border-radius: 100px;
-                border-top: 4px solid #ff451c;
-                border-right: 4px solid #ff451c;
-                border-bottom: 8px solid #ff451c;
-                border-left: 4px solid #ff451c;
-                background: $white;
-                position: absolute;
-                bottom: -25px;
-                z-index: 2;
-                padding: 10px 20px;
-
-                text-align: center;
-                font-family: "Multiround Pro";
-                font-size: 16px;
-
-                @media (max-width: 1024px) {
-                    font-size: 14px;
-
-                    border-top: 2px solid #ff451c;
-                    border-right: 2px solid #ff451c;
-                    border-bottom: 6px solid#ff451c;
-                    border-left: 2px solid #ff451c;
-                }
-            }
-
             img {
                 height: 20px;
 
@@ -1417,51 +1453,53 @@
         }
     }
 
-    .read {
-        // .read-more
+    .read-more {
+        margin-inline: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        color: $accent;
+        position: relative;
 
-        &-more {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            width: 100%;
-            color: $accent;
+        transition: all 0.3s ease 0s;
+
+        cursor: pointer;
+
+        span,
+        img,
+        svg {
+            pointer-events: none;
+        }
+
+        input {
+            display: none;
+        }
+
+        span {
+            text-align: center;
+            font-family: "Multiround Pro";
+            font-size: 14px;
+            white-space: nowrap;
             position: relative;
+            z-index: 1;
+        }
 
-            transition: all 0.3s ease 0s;
+        img,
+        svg {
+            position: relative;
+            z-index: 1;
+            width: 14px;
+            height: 14px;
 
-            @media (any-hover: hover) {
-                &:hover {
-                    opacity: 0.8;
-                }
-            }
+            transition: transform 0.3s ease 0s;
+        }
 
-            &:after {
-                position: absolute;
-                content: "";
-                left: 0;
-                bottom: 0;
-                width: 100%;
-                height: 50px;
-                background-color: $white;
-                filter: blur(10px);
-            }
-
-            span {
-                text-align: center;
-                font-family: "Multiround Pro";
-                font-size: 14px;
-                white-space: nowrap;
-                position: relative;
-                z-index: 1;
-            }
-
+        &:has(input:checked) {
             img,
             svg {
-                position: relative;
-                z-index: 1;
-                width: 14px;
-                height: 14px;
+                transform: rotate(180deg);
             }
         }
     }

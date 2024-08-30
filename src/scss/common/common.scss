@@ -28,8 +28,6 @@ body {
 
 main {
     flex: 1 1 auto;
-
-    @include adaptive-value("padding-top", 143, 103, 1);
 }
 
 ._container {
@@ -114,12 +112,16 @@ p {
     border-bottom: 5px solid currentColor;
     border-left: 2px solid currentColor;
 
+    transition:
+        background-color 0.3s ease 0s,
+        border-color 0.3s ease 0s,
+        color 0.3s ease 0s;
+
     // ._btn-orange
 
     &-orange {
         padding: 20px;
         color: $accent;
-        transition: all 0.3s ease 0s;
 
         @media (any-hover: hover) {
             &:hover {
@@ -137,7 +139,6 @@ p {
         color: $white;
         background-color: $accent_2;
         border-color: $black;
-        transition: background-color 0.3s ease 0s;
 
         @media (max-width: 1024px) {
             padding: 20px 30px;
@@ -156,7 +157,6 @@ p {
         padding: 20px 70px;
         color: $white;
         border-color: $white;
-        transition: background-color 0.3s ease 0s;
         background-color: unset;
 
         @media (max-width: 1024px) {
@@ -181,6 +181,10 @@ p {
 
     &-slide {
     }
+}
+
+.swiper-button-disabled {
+    opacity: 0.5;
 }
 
 .navigation {
@@ -226,12 +230,14 @@ p {
             pointer-events: none;
         }
 
-        @media (any-hover: hover) {
-            &:hover {
-                background-color: $accent;
+        &:not(.swiper-button-disabled) {
+            @media (any-hover: hover) {
+                &:hover {
+                    background-color: $accent;
 
-                svg {
-                    fill: $white;
+                    svg {
+                        fill: $white;
+                    }
                 }
             }
         }
@@ -246,6 +252,7 @@ p {
     .next {
     }
 }
+
 
 figure,
 img,

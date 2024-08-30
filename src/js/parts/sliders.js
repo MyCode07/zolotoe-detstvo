@@ -21,6 +21,7 @@ if (sliders.length) {
                 },
                 autoplay: {
                     delay: 4000,
+                    pauseOnMouseEnter: true
                 },
             })
         }
@@ -31,7 +32,9 @@ if (sliders.length) {
                 spaceBetween: 30,
                 autoplay: {
                     delay: 4000,
+                    pauseOnMouseEnter: true
                 },
+                grabCursor: true,
                 breakpoints: {
                     320: {
                         slidesPerView: 1.2,
@@ -51,14 +54,13 @@ if (sliders.length) {
                     },
                     1024: {
                         slidesPerView: 3.2,
-                        spaceBetween: 10
+                        spaceBetween: 30
                     }
                 }
             })
         }
         if (slider.closest('.product__slider')) {
             let swiper = new Swiper(".thumbs-slider", {
-                loop: true,
                 spaceBetween: 10,
                 slidesPerView: 4,
                 freeMode: true,
@@ -67,7 +69,6 @@ if (sliders.length) {
 
             let swiper2 = new Swiper(".main-slider", {
                 modules: [Pagination, Thumbs],
-                loop: true,
                 spaceBetween: 10,
                 pagination: {
                     el: pagination,
@@ -82,7 +83,6 @@ if (sliders.length) {
             new Swiper(slider, {
                 modules: [Autoplay, Navigation],
                 slidesPerView: 4,
-                loop: true,
                 spaceBetween: 30,
                 navigation: {
                     nextEl: prev,
@@ -90,6 +90,7 @@ if (sliders.length) {
                 },
                 autoplay: {
                     delay: 4000,
+                    pauseOnMouseEnter: true
                 },
                 breakpoints: {
                     320: {
@@ -122,7 +123,6 @@ if (sliders.length) {
             new Swiper(slider, {
                 modules: [Autoplay, Navigation],
                 slidesPerView: 4,
-                loop: true,
                 spaceBetween: 30,
                 navigation: {
                     nextEl: prev,
@@ -130,6 +130,7 @@ if (sliders.length) {
                 },
                 autoplay: {
                     delay: 4000,
+                    pauseOnMouseEnter: true
                 },
                 breakpoints: {
                     320: {
