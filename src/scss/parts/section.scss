@@ -1510,9 +1510,10 @@
     position: relative;
     @include adaptive-value("padding-bottom", 200, 100, 1);
     margin-bottom: 0;
+    
 
     .section__body {
-        @include adaptive-value("padding-bottom", 100, 50, 1);
+        @include adaptive-value("padding-bottom", 150, 50, 1);
         @include adaptive-value("padding-top", 100, 50, 1);
     }
 

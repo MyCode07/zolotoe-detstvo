@@ -77,12 +77,12 @@ const observerStagger = new IntersectionObserver((entries, self) => {
 function animateStagger(elem) {
     gsap.to(elem, {
         opacity: 1,
-        duration: 0.3,
+        duration: 0.4,
         x: 0,
         y: 0,
         y: 0,
         ease: 'ease',
-        stagger: 0.2,
+        stagger: 0.25,
     });
 }
 

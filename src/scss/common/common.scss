@@ -101,7 +101,7 @@ p {
     text-align: center;
     white-space: nowrap;
     @include adaptive-value("font-size", 20, 14, 1);
-
+    height: 75px;
     font-weight: 400;
     line-height: 1;
     text-transform: uppercase;
@@ -117,11 +117,20 @@ p {
         border-color 0.3s ease 0s,
         color 0.3s ease 0s;
 
+    @media (max-width: 1024px) {
+        height: 60px;
+    }
+
     // ._btn-orange
 
     &-orange {
+        height: fit-content;
         padding: 20px;
         color: $accent;
+
+        @media (max-width: 1024px) {
+            height: fit-content;
+        }
 
         @media (any-hover: hover) {
             &:hover {
@@ -293,6 +302,13 @@ input[type="number"] {
 }
 
 .arca {
+    position: relative;
+    z-index: 2;
+
+    &:has(.callback) {
+        @include adaptive-value("margin-bottom", -200, -100, 1);
+    }
+
     .arca-top {
         margin-bottom: -1px;
     }

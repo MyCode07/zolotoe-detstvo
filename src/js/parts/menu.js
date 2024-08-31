@@ -8,6 +8,7 @@ const menuCloseBtn = document.querySelector('._close');
 if (burger) {
     burger.addEventListener('click', (e) => {
         menu.classList.toggle('_open');
+        burger.classList.toggle('_open');
 
         if (menu.classList.contains('_open')) {
             lockPadding();
@@ -22,6 +23,7 @@ if (burger) {
 if (menuCloseBtn) {
     menuCloseBtn.addEventListener('click', (e) => {
         menu.classList.remove('_open');
+        burger.classList.remove('_open');
         unLockPadding();
     })
 }

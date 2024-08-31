@@ -1,11 +1,11 @@
 import { maskInputs } from "./static/inputmask.js";
-
+import './utils/smoothscrol.js';
 import "./parts/forms.js";
 import "./parts/sliders.js";
 import "./parts/tabs.js";
 import "./parts/show-more.js";
 import "./parts/popup.js";
-// import "./parts/menu.js";
+import "./parts/menu.js";
 import { accorden } from "./static/accordeon.js";
 import { animateAction, animateStaggerAction } from "./parts/animations.js";
 import { runTicker } from "./static/ticker.js";

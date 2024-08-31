@@ -2,6 +2,10 @@
     background-color: $accent;
     padding-bottom: 50px;
 
+    @media (max-width: 1024px) {
+        padding-bottom: 25px;
+    }
+
     // .footer__container
 
     &__container {
@@ -13,6 +17,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        @media (max-width: 1024px) {
+            padding-top: 50px;
+        }
     }
 
     // .footer__logo
@@ -131,6 +139,10 @@
 
         @media (max-width: 768px) {
             flex-direction: column-reverse;
+
+            & > :last-child {
+                order: -1;
+            }
         }
 
         p,
