@@ -86,43 +86,9 @@ if (submenuList.length) {
 }
 
 
-const headerCatalogOpenBtn = document.querySelector('.header__catalog');
-const catalogPopup = document.querySelector('.popup#catalog');
-const headerSearchForm = document.querySelector('.header__search-form');
-
 
 document.addEventListener('click', function (e) {
     let targetEl = e.target;
-
-    if (targetEl.classList.contains('header__catalog')) {
-        headerCatalogOpenBtn.classList.toggle('_open');
-        catalogPopup.classList.toggle('_open')
-    }
-
-    if (targetEl.classList.contains('menu__catalog-btn')) {
-        targetEl.closest('nav').classList.toggle('_open')
-    }
-
-    if (targetEl.classList.contains('header__search')) {
-        headerSearchForm.classList.add('_active')
-    }
-
-    if (targetEl.classList.contains('header__search-close')) {
-        headerSearchForm.classList.remove('_active')
-    }
-
-    if (!targetEl.classList.contains('header__search') && !targetEl.closest('.header__search-form')) {
-        headerSearchForm.classList.remove('_active')
-    }
-
-    if (!targetEl.closest('.popup#catalog') && targetEl != headerCatalogOpenBtn && catalog.classList.contains('_open')) {
-        headerCatalogOpenBtn.classList.remove('_open');
-        catalogPopup.classList.remove('_open')
-    }
-
-    if (targetEl == catalogPopup) {
-        headerCatalogOpenBtn.classList.remove('_open');
-    }
 
     if (!targetEl.closest('li[data-open]') && !targetEl.closest('nav') && document.querySelector('li[data-open]')) {
         document.querySelector('li[data-open]').removeAttribute('data-open')
