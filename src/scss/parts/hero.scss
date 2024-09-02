@@ -59,10 +59,21 @@
                 border-radius: 20px;
             }
 
+            picture,
             img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+
+                @media (min-width: 1025px) {
+                    display: none;
+                }
+            }
+
+            .image-container {
+                @media (max-width: 1024px) {
+                    display: none;
+                }
             }
 
             .masked-image {

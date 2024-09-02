@@ -1,6 +1,4 @@
 import { maskInputs } from "./static/inputmask.js";
-import './utils/smoothscrol.js';
-import "./parts/forms.js";
 import "./parts/sliders.js";
 import "./parts/tabs.js";
 import "./parts/show-more.js";
@@ -15,12 +13,11 @@ import { hoverMouse } from "./parts/btn-hover.js";
 runTicker();
 hoverMouse();
 
-
 accorden();
 
 
 stickyHeader();
-maskInputs('+7 (999) 999-99-99', '[name="phone"]')
+maskInputs('+7 (999) 999-99-99', '._mask-phone')
 animateAction();
 animateStaggerAction();
 
