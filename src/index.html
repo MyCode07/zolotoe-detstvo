@@ -51,7 +51,9 @@
     <section id="about" class="section about">
         <div class="section__container _container">
             <div class="section__body">
-                <img class="left" src="img/about.png" alt="" data-animate data-animate-top>
+                <div class="left" data-animate data-animate-top>
+                    <img src="img/about.png" alt="">
+                </div>
                 <div class="about__content">
                     <label data-animate-stagger data-animate-bottom>Мы международную компанию с более чем 12-летним
                         опытом в проектировании и создании детских
@@ -67,7 +69,9 @@
                         data-animate-bottom>Получить готовое решение</button>
 
                 </div>
-                <img class="right" src="img/about.png" alt="" data-animate data-animate-bottom>
+                <div class="right" data-animate data-animate-bottom>
+                    <img src="img/about.png" alt="">
+                </div>
             </div>
         </div>
     </section>
@@ -316,25 +320,25 @@
             <div class="section__body">
                 <span class="offer__name">ПОЛУЧИте ДИЗАЙН И СКИДКУ <br>НА СВОЙ первый ПРОЕКТ</span>
                 <p class="offer__warning">*Акция действует <br> до 31 июля 2024 года</p>
-                <ol>
-                    <li>
+                <ol data-days="3">
+                    <li class="days">
                         <span>00</span>
-                        <label>Секунд</label>
+                        <label>День</label>
                     </li>
                     <p>:</p>
-                    <li>
-                        <span>00</span>
-                        <label>Минут</label>
-                    </li>
-                    <p>:</p>
-                    <li>
+                    <li class="hours">
                         <span>00</span>
                         <label>Час</label>
                     </li>
                     <p>:</p>
-                    <li>
+                    <li class="minutes">
                         <span>00</span>
-                        <label>День</label>
+                        <label>Минут</label>
+                    </li>
+                    <p>:</p>
+                    <li class="seconds">
+                        <span>00</span>
+                        <label>Секунд</label>
                     </li>
                 </ol>
                 <button class="_btn _btn-blue " data-open-popup data-id="callback">ОБРАТНАЯ Связь</button>
@@ -469,7 +473,9 @@
     <section class="section important" data-animate data-animate-bottom>
         <div class="section__container _container">
             <div class="section__body">
-                <img class="kid" src="img/kid.png" alt="">
+                <div class="kid">
+                    <img src="img/kid.png" alt="">
+                </div>
                 <div class="important__box">
                     <div class="section__content">
                         <label>Звездное детство</label>

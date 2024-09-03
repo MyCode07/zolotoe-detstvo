@@ -9,11 +9,14 @@ import { animateAction, animateStaggerAction } from "./parts/animations.js";
 import { runTicker } from "./static/ticker.js";
 import { stickyHeader } from "./parts/header.js";
 import { hoverMouse } from "./parts/btn-hover.js";
+// import { clock } from "./parts/countdawn.js";
+import { Fancybox } from "@fancyapps/ui";
 
 runTicker();
 hoverMouse();
 
 accorden();
+// clock();
 
 
 stickyHeader();
@@ -21,7 +24,6 @@ maskInputs('+7 (999) 999-99-99', '._mask-phone')
 animateAction();
 animateStaggerAction();
 
-import { Fancybox } from "@fancyapps/ui";
 Fancybox.bind("[data-fancybox]", {
     Carousel: {
         Panzoom: {

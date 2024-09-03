@@ -1,4 +1,5 @@
 import { TweenMax, Power2, Elastic } from 'gsap'
+import { isMobile } from '../utils/isMobile.js';
 
 const buttons = document.querySelectorAll('._btn');
 
@@ -88,7 +89,7 @@ const buttons = document.querySelectorAll('._btn');
 
 
 export function hoverMouse() {
-    if (!buttons) return;
+    if (!buttons || isMobile.any()) return;
 
     buttons.forEach((item) => {
 

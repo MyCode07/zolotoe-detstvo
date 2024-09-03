@@ -382,7 +382,8 @@
                 height: 200px;
             }
 
-            img {
+            img,
+            picture {
                 position: relative;
                 z-index: 1;
                 width: 100%;
@@ -500,13 +501,17 @@
             border-radius: 20px;
         }
 
-        img {
-            position: absolute;
-            left: 0;
-            top: 0;
+        img,
+        picture {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16/9;
         }
 
         button {
@@ -586,10 +591,9 @@
         display: block;
         position: relative;
         z-index: 1;
+        margin-bottom: 1em;
 
         @media (max-width: 1024px) {
-            margin-bottom: 15px;
-
             br {
                 display: none;
             }
@@ -630,6 +634,8 @@
         width: fit-content;
         position: relative;
         z-index: 1;
+
+        display: none;
 
         @media (max-width: 1024px) {
             gap: 5px;
@@ -857,6 +863,9 @@
 
             @media (max-width: 600px) {
                 width: 100%;
+                min-width: 0;
+                padding: 10px 20px;
+                font-size: 16px;
             }
 
             &._active {
@@ -1308,7 +1317,8 @@
             min-height: 300px;
         }
 
-        img {
+        img,
+        picture {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -1510,7 +1520,6 @@
     position: relative;
     @include adaptive-value("padding-bottom", 200, 100, 1);
     margin-bottom: 0;
-    
 
     .section__body {
         @include adaptive-value("padding-bottom", 150, 50, 1);
@@ -1827,4 +1836,21 @@
             margin-top: 1em;
         }
     }
+}
+
+.wpcf7-response-output {
+    display: none !important;
+    visibility: hidden;
+}
+
+.form__bottom {
+    position: relative;
+}
+
+.wpcf7-spinner {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
+    margin: 0;
 }
