@@ -41,7 +41,7 @@
         h2 {
             text-align: center;
             margin-bottom: 0.9em;
-            @include adaptive-value("font-size", 64, 36, 1);
+            @include adaptive-value("font-size", 64, 30, 1);
         }
     }
 
