@@ -952,18 +952,19 @@
 
         .kid {
             position: absolute;
+            top: 0;
             right: 0;
             bottom: 0;
             z-index: 1;
+            width: 75%;
 
-            @media (min-width: 1024px) {
-                @include adaptive-value("width", 816, 387, 1);
-                @include adaptive-value("height", 1024, 486, 1);
-            }
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
 
             @media (max-width: 1024px) {
-                width: 387px;
-                height: 486px;
+                min-width: 50%;
+                display: none;
             }
 
             @media (max-width: 768px) {
@@ -972,6 +973,17 @@
 
             @media (max-width: 600px) {
                 right: -30%;
+            }
+
+            img,
+            picture {
+                height: 100%;
+                object-fit: contain;
+
+                @media (min-width: 769px) {
+                    position: relative;
+                    right: -20%;
+                }
             }
         }
     }
@@ -1069,11 +1081,11 @@
             }
 
             @media (max-width: 768px) {
-                max-width: 65%;
+                // max-width: 65%;
             }
 
             @media (max-width: 425px) {
-                width: 220px;
+                // width: 220px;
             }
         }
 
@@ -1082,7 +1094,7 @@
             display: block;
             margin-bottom: 150px;
 
-            @media (max-width: 1240px) {
+            @media (max-width: 1440px) {
                 margin-bottom: 100px;
             }
 
